@@ -1,7 +1,13 @@
 <h1>Articles</h1>
+<% unless session[:user_id]%>
+  <%= link_to "Login", login_path(), data: {turbo_method: 'get'}%>
+<% end%>
+<br />
 Our blog has <%= Article.public_count %> articles and counting!
 <br />
-<%= link_to "New Article", new_article_path %>
+<% if session[:user_id]%>
+  <%= link_to "New Article", new_article_path %>
+<% end%>
 <ul>
   <% @articles.each do |article| %>
     <% unless article.archived? %>
@@ -11,3 +17,7 @@ Our blog has <%= Article.public_count %> articles and counting!
     <% end %>
   <% end %>
 </ul>
+
+<% if session[:user_id]%>
+  <%= link_to "Logout", logout_path(), data: {turbo_method: 'delete'} %>
+<% end%>

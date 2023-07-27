@@ -18,5 +18,7 @@ module Blog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.logger = Logger.new(STDOUT)
+    config.logger = Log4r::Logger.new("Application Log")
   end
 end

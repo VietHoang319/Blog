@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "login" => 'session#new'
   post "login" => 'session#create'
-  post "logout" => 'session#destroy'
+  delete "logout" => 'session#destroy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Mapping url with action of controller
